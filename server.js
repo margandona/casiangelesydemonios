@@ -1,7 +1,10 @@
+require('dotenv').config(); // Cargar variables de entorno desde .env
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Importa el paquete cors
-const { admin, db } = require('./database/firebaseconfig'); // Importa la configuración de Firebase
+const formRoutes = require('./backend/rutas/formRoutes'); // Importa las rutas del formulario
+const userRoutes = require('./backend/rutas/userRoutes'); // Importa las rutas de usuarios
+const authRoutes = require('./backend/rutas/authRoutes'); // Importa las rutas de autenticación
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,23 +17,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static('public'));
 
-// Handle form submission
-app.post('/submit-form', async (req, res) => {
-  const { name, email, message } = req.body;
+// Use form routes
+app.use('/api', formRoutes);
 
-  try {
-    await db.collection('contactsCAD').add({
-      name,
-      email,
-      message,
-      timestamp: admin.firestore.FieldValue.serverTimestamp()
-    });
-    res.status(200).send('Mensaje enviado con éxito');
-  } catch (error) {
-    console.error('Error al enviar el mensaje: ', error);
-    res.status(500).send('Error al enviar el mensaje');
-  }
-});
+// Use user routes
+app.use('/api', userRoutes);
+
+// Use auth routes
+app.use('/api', authRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

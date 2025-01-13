@@ -17,11 +17,50 @@
     <title>Radio Frecuencia Interactiva</title>
     
 
-   
+      <!-- ACA COMIENZA SEO -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE72QH8FMF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-CE72QH8FMF');
+  </script>
+
+  <!-- GOOGLE SEARCH CONSOLE -->
+  <meta name="google-site-verification" content="9qPa7yK77yV4PoRjoY735_oZDswjujxcjrB2WPWnpw4" />
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TSBZ2DCF');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Clarity tracking code for https://www.frecuenciainteractiva.cl/ -->
+  <script>
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r);
+      t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    }
+    )
+      (window, document, "clarity", "script", "jihrov43mx");
+  </script>
 </head>
 
 <body>
-  
+    <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSBZ2DCF" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <!-- Nav with toggle button -->
     <nav class="navbar">
         <div class="navbar__toggle" id="navToggle">
@@ -42,7 +81,7 @@
 
     <section id="radio" class="radio-player">
         <div class="radio-player__title">
-            <img src="assets/images/logo.png" alt="" class="radio-player__banner">
+            <img src="assets/images/bannerFA.jpeg" alt="" class="radio-player__banner">
         </div>
         <div class="radio-player__progress-container">
             <div class="radio-player__progress-bar">
@@ -101,7 +140,7 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            fetch('http://localhost:3000/submit-form', { // Cambia la URL para apuntar al servidor en producción
+            fetch('', { // Cambia la URL para apuntar al servidor en producción
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
