@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="assets/images/bannerFA.ico" style="border-radius:60px;" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="description" content="Radio online enfocada en un público adulto joven de 25 a 60 años, profesionales y emprendedores.">
+    <meta name="keywords" content="Radio online, zona gamer, noticias, salud, belleza, psicología, libros, política" />
+    <meta name="author" content="Perspectiva Digital" />
+    <meta name="copyright" content="neekWorld 2023" />
+    <link rel="manifest" href="manifest.json">
+
+    <title>Radio Frecuencia Interactiva</title>
+    
+
+   
+</head>
+
+<body>
+  
+    <!-- Nav with toggle button -->
+    <nav class="navbar">
+        <div class="navbar__toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="navbar__menu" id="navMenu">
+            <li><a href="#radio">Escuchar Radio</a></li>
+            <li><a href="#" id="downloadRadio">Descargar Acceso Directo</a></li>
+            <li><a href="#" id="contactMenu">Contacto</a></li>
+            <!-- Botón Modo Descanso Visual dentro del menú -->
+            <li class="visual-rest-mode-list-item">
+                <button class="visual-rest-mode-button" id="restModeButton">
+                    <i class="fas fa-moon"></i> Modo Descanso Visual
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="radio" class="radio-player">
+        <div class="radio-player__title">
+            <img src="assets/images/logo.png" alt="" class="radio-player__banner">
+        </div>
+        <div class="radio-player__progress-container">
+            <div class="radio-player__progress-bar">
+                <div id="progressBarFill" class="radio-player__progress-bar-fill"></div>
+            </div>
+        </div>
+        <div class="radio-player__controls">
+            <div class="radio-player__control-buttons">
+                <button id="playButton" class="radio-player__button radio-player__button--play">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="pauseButton" class="radio-player__button radio-player__button--pause">
+                    <i class="fas fa-pause"></i>
+                </button>
+            </div>
+            <div class="radio-player__volume-control">
+                <i id="volumeIcon" class="fas fa-volume-up radio-player__volume-icon"></i>
+                <input type="range" id="volumeSlider" class="radio-player__volume-slider" min="0" max="100" value="50">
+            </div>
+        </div>
+        <div class="radio-player__visualizer-container">
+            <div class="radio-player__visualizer" id="visualizer"></div>
+        </div>
+    </section>
+
+    <!-- Formulario de Contacto (inicialmente oculto) -->
+    <div id="contactFormContainer" class="contact-form-container hidden">
+        <form id="contactForm" class="contact-form">
+            <h2>Contacto</h2>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+            <button type="submit">Enviar</button>
+            <button type="button" id="closeContactForm">Cerrar</button>
+        </form>
+    </div>
+
+    <!-- Footer with link -->
+    <footer class="footer">
+        <p>&copy; <a href="https://www.makuaz.cl" target="_blank" style="color: #ffffff;">MaKuaZ 2025</a></p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/radioPlayerModel.js"></script>
+    <script src="js/radioPlayerController.js"></script>
+    <script src="js/main.js"></script> <!-- Enlace al archivo JavaScript externo -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            fetch('http://localhost:3000/submit-form', { // Cambia la URL para apuntar al servidor en producción
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                document.getElementById('contactForm').reset();
+            })
+            .catch(error => {
+                console.error('Error al enviar el mensaje: ', error);
+                alert('Error al enviar el mensaje. Inténtalo de nuevo más tarde.');
+            });
+        });
+    </script>
+</body>
+
+</html>

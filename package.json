@@ -1,0 +1,24 @@
+{
+  "name": "frecuencia-interactiva",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Radio Frecuencia Interactiva es una aplicación de radio online enfocada en un público adulto joven de 25 a 60 años, profesionales y emprendedores.",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.2",
+    "nginx": "^1.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

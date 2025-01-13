@@ -1,0 +1,21 @@
+{
+    "name": "Radio Frecuencia Interactiva",
+    "short_name": "RadioFrecuencia",
+    "description": "Radio online para profesionales y emprendedores.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#f1f0f0",
+    "theme_color": "#3A4F52",
+    "icons": [
+        {
+            "src": "assets/images/bannerFA.ico",
+            "sizes": "192x192",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "assets/images/bannerFA.jpeg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
+}
