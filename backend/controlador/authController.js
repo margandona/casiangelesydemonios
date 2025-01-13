@@ -34,7 +34,10 @@ const login = async (req, res) => {
   try {
     console.log('Iniciando sesión para:', email);
     const userRecord = await admin.auth().getUserByEmail(email);
-    const token = jwt.sign({ uid: userRecord.uid }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
+    const userDoc = await db.collection('users').doc(userRecord.uid).get();
+    const userRole = userDoc.data().role;
+
+    const token = jwt.sign({ uid: userRecord.uid, role: userRole }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({ token });
   } catch (error) {

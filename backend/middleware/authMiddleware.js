@@ -11,6 +11,7 @@ const authenticate = async (req, res, next) => {
   try {
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
     req.user = decodedToken;
+    console.log('Token verificado:', decodedToken);
     next();
   } catch (error) {
     console.error('Error al verificar el token:', error.message);

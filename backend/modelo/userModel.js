@@ -3,9 +3,17 @@ const { check, validationResult } = require('express-validator');
 const validateUser = [
   check('email').isEmail().withMessage('Debe ser un correo electrónico válido'),
   check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
-  check('role').isIn(['admin', 'user']).withMessage('El rol debe ser admin o user'),
+  check('role').optional().isIn(['admin', 'user']).withMessage('El rol debe ser admin o user'),
   check('name').not().isEmpty().withMessage('El nombre es obligatorio'),
   check('birthdate').isDate().withMessage('La fecha de nacimiento debe ser una fecha válida')
+];
+
+const validateUpdateUser = [
+  check('email').optional().isEmail().withMessage('Debe ser un correo electrónico válido'),
+  check('password').optional().isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+  check('role').optional().isIn(['admin', 'user']).withMessage('El rol debe ser admin o user'),
+  check('name').optional().not().isEmpty().withMessage('El nombre es obligatorio'),
+  check('birthdate').optional().isDate().withMessage('La fecha de nacimiento debe ser una fecha válida')
 ];
 
 const handleValidationErrors = (req, res, next) => {
@@ -16,4 +24,4 @@ const handleValidationErrors = (req, res, next) => {
   next();
 };
 
-module.exports = { validateUser, handleValidationErrors };
+module.exports = { validateUser, validateUpdateUser, handleValidationErrors };

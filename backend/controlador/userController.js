@@ -6,10 +6,10 @@ const isAdmin = async (uid) => {
 };
 
 const createUser = async (req, res) => {
-  const { email, password, role, name, birthdate } = req.body;
-  const { uid } = req.user;
+  const { email, password, role = 'user', name, birthdate } = req.body;
+  const { uid, role: requesterRole } = req.user;
 
-  if (!await isAdmin(uid)) {
+  if (requesterRole !== 'admin') {
     return res.status(403).send('Acceso denegado');
   }
 
@@ -38,9 +38,9 @@ const createUser = async (req, res) => {
 
 const getUser = async (req, res) => {
   const { uid } = req.params;
-  const { uid: requesterUid } = req.user;
+  const { role } = req.user;
 
-  if (!await isAdmin(requesterUid)) {
+  if (role !== 'admin') {
     return res.status(403).send('Acceso denegado');
   }
 
@@ -59,16 +59,33 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const { uid } = req.params;
-  const { email, role, name, birthdate } = req.body;
-  const { uid: requesterUid } = req.user;
+  const { email, password, role, name, birthdate } = req.body;
+  const { uid: requesterUid, role: requesterRole } = req.user;
 
-  if (!await isAdmin(requesterUid)) {
+  if (uid !== requesterUid && requesterRole !== 'admin') {
     return res.status(403).send('Acceso denegado');
   }
 
   try {
-    await admin.auth().updateUser(uid, { email });
-    await db.collection('users').doc(uid).update({ email, role, name, birthdate });
+    const updateData = {};
+    if (email) {
+      await admin.auth().updateUser(uid, { email });
+      updateData.email = email;
+    }
+    if (password) {
+      await admin.auth().updateUser(uid, { password });
+    }
+    if (role) {
+      updateData.role = role;
+    }
+    if (name) {
+      updateData.name = name;
+    }
+    if (birthdate) {
+      updateData.birthdate = birthdate;
+    }
+
+    await db.collection('users').doc(uid).update(updateData);
 
     res.status(200).send('Usuario actualizado con éxito');
   } catch (error) {
@@ -103,9 +120,11 @@ const getMe = async (req, res) => {
     console.log('Obteniendo datos del usuario:', uid);
     const userDoc = await db.collection('users').doc(uid).get();
     if (!userDoc.exists) {
+      console.log('Usuario no encontrado:', uid);
       return res.status(404).send('Usuario no encontrado');
     }
 
+    console.log('Datos del usuario obtenidos:', userDoc.data());
     res.status(200).json(userDoc.data());
   } catch (error) {
     console.error('Error al obtener los datos del usuario:', error.message);
