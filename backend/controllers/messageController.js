@@ -1,4 +1,4 @@
-const { db } = require('../../database/firebaseconfig');
+const { db } = require('../database/firebaseconfig');
 
 const getMessages = async (req, res) => {
   try {

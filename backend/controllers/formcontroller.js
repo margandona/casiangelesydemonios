@@ -1,4 +1,4 @@
-const { db } = require('../../database/firebaseconfig');
+const { db } = require('../database/firebaseconfig');
 
 const submitForm = async (req, res) => {
   const { name, email, message } = req.body;

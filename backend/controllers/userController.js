@@ -1,4 +1,4 @@
-const { admin, db } = require('../../database/firebaseconfig');
+const { admin, db } = require('../database/firebaseconfig');
 
 const isAdmin = async (uid) => {
   const userDoc = await db.collection('users').doc(uid).get();

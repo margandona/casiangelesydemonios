@@ -35,7 +35,7 @@ $('#downloadRadio').on('click', function () {
         <html>
         <head>
             <title>Radio Frecuencia Interactiva</title>
-            <link rel="icon" href="https://example.com/icon.png" type="image/png">
+            <link rel="icon" href="../public/assets/images/logo" type="image/logo.png">
             <meta http-equiv="refresh" content="0; url=https://www.frecuenciainteractiva.cl">
         </head>
         <body>

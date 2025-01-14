@@ -12,7 +12,7 @@ yarn-error.log*
 .env
 
 # Firebase service account key
-database/radio.json
+backend/database/radio.json
 
 # PM2 process file
 pm2.pid

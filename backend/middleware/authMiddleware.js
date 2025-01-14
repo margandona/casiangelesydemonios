@@ -1,4 +1,4 @@
-const { admin, db } = require('../../database/firebaseconfig');
+const { admin, db } = require('../database/firebaseconfig');
 const jwt = require('jsonwebtoken');
 
 const authenticate = async (req, res, next) => {

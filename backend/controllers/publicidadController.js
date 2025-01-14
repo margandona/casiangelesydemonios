@@ -1,4 +1,4 @@
-const { db } = require('../../database/firebaseconfig');
+const { db } = require('../database/firebaseconfig');
 
 // Crear nueva publicidad
 const crearPublicidad = async (req, res) => {
