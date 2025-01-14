@@ -7,7 +7,7 @@ const isAdmin = async (uid) => {
 
 const createUser = async (req, res) => {
   const { email, password, role = 'user', name, birthdate } = req.body;
-  const { uid, role: requesterRole } = req.user;
+  const { role: requesterRole } = req.user;
 
   if (requesterRole !== 'admin') {
     return res.status(403).send('Acceso denegado');
@@ -38,9 +38,9 @@ const createUser = async (req, res) => {
 
 const getUser = async (req, res) => {
   const { uid } = req.params;
-  const { role } = req.user;
+  const { uid: requesterUid, role } = req.user;
 
-  if (role !== 'admin') {
+  if (uid !== requesterUid && role !== 'admin') {
     return res.status(403).send('Acceso denegado');
   }
 
