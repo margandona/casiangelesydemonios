@@ -1,6 +1,6 @@
 const express = require('express');
-const { register, login } = require('../controlador/authController');
-const { validateRegister, validateLogin, handleValidationErrors } = require('../modelo/authModel');
+const { register, login } = require('../controllers/authController');
+const { validateRegister, validateLogin, handleValidationErrors } = require('../models/authModel');
 
 const router = express.Router();
 

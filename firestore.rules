@@ -7,6 +7,9 @@ service cloud.firestore {
     match /contactsCAD/{document=**} {
       allow read, write: if true;
     }
+    match /forms/{document=**} {
+      allow read, write: if true;
+    }
     match /users/{userId} {
       allow read: if request.auth != null && (request.auth.uid == userId || request.auth.token.role == 'admin');
       allow write: if request.auth != null && request.auth.token.role == 'admin';

@@ -2,9 +2,11 @@ require('dotenv').config(); // Cargar variables de entorno desde .env
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Importa el paquete cors
-const formRoutes = require('./backend/rutas/formRoutes'); // Importa las rutas del formulario
-const userRoutes = require('./backend/rutas/userRoutes'); // Importa las rutas de usuarios
-const authRoutes = require('./backend/rutas/authRoutes'); // Importa las rutas de autenticación
+const formRoutes = require('./backend/routes/formRoutes'); // Importa las rutas del formulario
+const userRoutes = require('./backend/routes/userRoutes'); // Importa las rutas de usuarios
+const authRoutes = require('./backend/routes/authRoutes'); // Importa las rutas de autenticación
+const messageRoutes = require('./backend/routes/messageRoutes'); // Importa las rutas de mensajes
+const publicidadRoutes = require('./backend/routes/publicidad'); // Importa las rutas de publicidad
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +27,12 @@ app.use('/api', userRoutes);
 
 // Use auth routes
 app.use('/api', authRoutes);
+
+// Use message routes
+app.use('/api', messageRoutes);
+
+// Use publicidad routes
+app.use('/api/publicidad', publicidadRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

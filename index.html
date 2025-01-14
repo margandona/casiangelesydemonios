@@ -140,7 +140,7 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            fetch('', { // Cambia la URL para apuntar al servidor en producción
+            fetch('http://127.0.0.1:3000/api/submit-form', { // Cambia la URL para apuntar al servidor en producción
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

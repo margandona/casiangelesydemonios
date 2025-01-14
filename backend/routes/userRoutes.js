@@ -1,7 +1,7 @@
 const express = require('express');
-const { createUser, getUser, updateUser, deleteUser, getMe, getAllUsers } = require('../controlador/userController');
+const { createUser, getUser, updateUser, deleteUser, getMe, getAllUsers } = require('../controllers/userController');
 const { authenticate, authorize } = require('../middleware/authMiddleware');
-const { validateUser, validateUpdateUser, handleValidationErrors } = require('../modelo/userModel');
+const { validateUser, validateUpdateUser, handleValidationErrors } = require('../models/userModel');
 
 const router = express.Router();
 
