@@ -57,3 +57,18 @@ manifest.json
 
 # Sistema operativo
 igo.zip
+
+# Firebase
+firebase.json
+firestore.indexes.json
+firestore.rules
+manifest.json
+.firebaserc
+
+nginx.conf
+procfile
+formulario.xlsx
+
+#gitignore
+.gitignore
+.gitattributes
