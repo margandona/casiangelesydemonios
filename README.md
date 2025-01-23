@@ -3,6 +3,41 @@
 ## Descripción
 Radio Frecuencia Interactiva es una aplicación de radio online enfocada en un público adulto joven de 25 a 60 años, profesionales y emprendedores.
 
+## Características
+
+### Autenticación
+
+La aplicación utiliza autenticación basada en tokens JWT. Los usuarios deben registrarse e iniciar sesión para acceder a ciertas funcionalidades.
+
+- **Registro**: Los usuarios pueden registrarse proporcionando su nombre completo, nick de usuario, ciudad, correo electrónico, fecha de nacimiento, nacionalidad y contraseña.
+- **Inicio de sesión**: Los usuarios pueden iniciar sesión proporcionando su correo electrónico y contraseña.
+- **Cerrar sesión**: Los usuarios pueden cerrar sesión, lo que elimina el token de autenticación almacenado en el navegador.
+
+### Roles
+
+La aplicación soporta diferentes roles de usuario:
+
+- **Usuario**: Tiene acceso a funcionalidades básicas.
+- **Administrador**: Tiene acceso a funcionalidades avanzadas, como la gestión de usuarios y reportes.
+
+### Usuarios
+
+Los administradores pueden gestionar usuarios:
+
+- **Crear usuario**: Los administradores pueden crear nuevos usuarios.
+- **Editar usuario**: Los administradores pueden editar la información de los usuarios existentes.
+- **Eliminar usuario**: Los administradores pueden eliminar usuarios.
+
+### Reportes
+
+La aplicación permite la gestión de reportes de comportamiento de los pasajeros:
+
+- **Crear reporte**: Los usuarios pueden crear reportes proporcionando información detallada sobre el pasajero.
+- **Buscar reporte**: Los usuarios pueden buscar reportes por nombre, ID, CI o pasaporte, teléfono o nick.
+- **Ver todos los reportes**: Los administradores pueden ver todos los reportes.
+- **Editar reporte**: Los administradores pueden editar los reportes existentes.
+- **Eliminar reporte**: Los administradores pueden eliminar reportes.
+
 ## Requisitos previos
 - Node.js (versión 14 o superior)
 - npm (Node Package Manager)

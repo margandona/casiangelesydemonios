@@ -1,5 +1,5 @@
 {
-  "name": "frecuencia-interactiva",
+  "name": "casi-angeles-y-demonios",
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
@@ -9,14 +9,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Radio Frecuencia Interactiva es una aplicación de radio online enfocada en un público adulto joven de 25 a 60 años, profesionales y emprendedores.",
+  "description": "CASI ANGELES Y DEMONIOS.",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-validator": "^7.2.1",
-    "firebase": "^11.1.0",
+    "firebase": "^11.2.0",
     "firebase-admin": "^13.0.2",
     "mongoose": "^8.9.5",
     "nginx": "^1.0.8"

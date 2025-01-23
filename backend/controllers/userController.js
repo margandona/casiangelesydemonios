@@ -6,7 +6,7 @@ const isAdmin = async (uid) => {
 };
 
 const createUser = async (req, res) => {
-  const { email, password, role = 'user', name, birthdate } = req.body;
+  const { email, password, role = 'user', name, username, city, birthdate, nacionalidad } = req.body;
   const { role: requesterRole } = req.user;
 
   if (requesterRole !== 'admin') {
@@ -23,7 +23,10 @@ const createUser = async (req, res) => {
       email,
       role,
       name,
+      username,
+      city,
       birthdate,
+      nacionalidad,
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     };
 

@@ -2,7 +2,7 @@ const { admin, db } = require('../database/firebaseconfig');
 const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
-  const { email, password, name, birthdate } = req.body;
+  const { email, password, name, username, city, birthdate, nacionalidad } = req.body;
 
   try {
     console.log('Registrando usuario:', email);
@@ -15,7 +15,10 @@ const register = async (req, res) => {
       email,
       role: 'user', // Asignar automáticamente el rol de 'user'
       name,
+      username,
+      city,
       birthdate,
+      nacionalidad,
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     };
 
@@ -36,6 +39,9 @@ const login = async (req, res) => {
     const userRecord = await admin.auth().getUserByEmail(email);
     const userDoc = await db.collection('users').doc(userRecord.uid).get();
     const userRole = userDoc.data().role;
+
+    console.log('Usuario encontrado:', userRecord);
+    console.log('Documento del usuario:', userDoc.data());
 
     const token = jwt.sign({ uid: userRecord.uid, role: userRole }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
 

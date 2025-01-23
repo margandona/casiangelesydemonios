@@ -3,10 +3,10 @@ self.addEventListener('install', function(event) {
         caches.open('radio-cache').then(function(cache) {
             return cache.addAll([
                 '/',
-                '/index.html',
-                '/css/styles.css',
-                '/js/script.js',
-                '/assets/images/bannerFA.jpeg'
+                'public/index.html',
+                'public/css/styles.css',
+                'public/js/script.js',
+                'public/assets/images/bannerFA.jpeg'
             ]);
         })
     );

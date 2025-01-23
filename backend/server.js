@@ -12,29 +12,8 @@ const reportRoutes = require('./backend/routes/reportRoutes'); // Importa las ru
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Configuración de CORS
-const allowedOrigins = [
-  'https://casiangelesydemonios.firebaseapp.com',
-  'https://casiangelesydemonios.web.app',
-  'https://www.sexyangeles.cl',
-  'http://localhost:3000',
-  'http://127.0.0.1:5501'
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('No permitido por CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir métodos HTTP específicos
-  allowedHeaders: ['Content-Type', 'Authorization'] // Permitir encabezados específicos
-};
-
 // Middleware
-app.use(cors(corsOptions)); // Usa el middleware cors con las opciones configuradas
+app.use(cors()); // Usa el middleware cors
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

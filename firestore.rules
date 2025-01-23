@@ -1,18 +1,20 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /contacts/{document=**} {
-      allow read, write: if true;
-    }
-    match /contactsCAD/{document=**} {
-      allow read, write: if true;
-    }
-    match /forms/{document=**} {
-      allow read, write: if true;
-    }
+    // Allow read and write access to all users under the "users" collection
     match /users/{userId} {
-      allow read: if request.auth != null && (request.auth.uid == userId || request.auth.token.role == 'admin');
-      allow write: if request.auth != null && request.auth.token.role == 'admin';
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Allow read access to all users under the "reports" collection
+    match /reports/{reportId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Default rule: deny all access
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
