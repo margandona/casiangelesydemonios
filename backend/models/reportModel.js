@@ -26,7 +26,7 @@ const getAllReports = async () => {
 };
 
 const updateReport = async (id, updateData) => {
-    await collection.doc(id).update(updateData);
+    await collection.doc(id).update(updateData);-
 };
 
 const deleteReport = async (id) => {
