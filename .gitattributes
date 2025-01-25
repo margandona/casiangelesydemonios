@@ -23,3 +23,6 @@
 *.tar binary
 *.exe binary
 
+# Ensure .firebase cache files use LF line endings
+.firebase/hosting.cHVibGlj.cache text eol=lf
+
