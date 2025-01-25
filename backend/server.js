@@ -2,12 +2,12 @@ require('dotenv').config(); // Load environment variables from .env
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Importa el paquete cors
-const formRoutes = require('./backend/routes/formRoutes'); // Importa las rutas del formulario
-const userRoutes = require('./backend/routes/userRoutes'); // Importa las rutas de usuarios
-const authRoutes = require('./backend/routes/authRoutes'); // Importa las rutas de autenticación
-const messageRoutes = require('./backend/routes/messageRoutes'); // Importa las rutas de mensajes
-const publicidadRoutes = require('./backend/routes/publicidad'); // Importa las rutas de publicidad
-const reportRoutes = require('./backend/routes/reportRoutes'); // Importa las rutas de reportes
+const formRoutes = require('./routes/formRoutes'); // Importa las rutas del formulario
+const userRoutes = require('./routes/userRoutes'); // Importa las rutas de usuarios
+const authRoutes = require('./routes/authRoutes'); // Importa las rutas de autenticación
+const messageRoutes = require('./routes/messageRoutes'); // Importa las rutas de mensajes
+const publicidadRoutes = require('./routes/publicidad'); // Importa las rutas de publicidad
+const reportRoutes = require('./routes/reportRoutes'); // Importa las rutas de reportes
 
 const app = express();
 const port = process.env.PORT || 3000;

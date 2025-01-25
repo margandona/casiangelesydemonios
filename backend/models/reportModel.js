@@ -3,9 +3,9 @@ const { db } = require('../database/firebaseconfig');
 const collection = db.collection('reports');
 
 const saveReport = async (reportData) => {
-  reportData.creationDate = new Date().toISOString(); // Add creation date
-  const docRef = await collection.add(reportData);
-  return docRef.id;
+    reportData.creationDate = new Date().toISOString(); // Add creation date
+    const docRef = await collection.add(reportData);
+    return docRef.id;
 };
 
 const getReport = async (id) => {
@@ -26,14 +26,13 @@ const getAllReports = async () => {
 };
 
 const updateReport = async (id, updateData) => {
-    await collection.doc(id).update(updateData);-
+    await collection.doc(id).update(updateData);
 };
 
 const deleteReport = async (id) => {
     await collection.doc(id).delete();
 };
 
-// Definir la función getReportByCIOrPassport
 const getReportByCIOrPassport = async (CI_or_passport) => {
     const snapshot = await collection.where('CI_or_passport', '==', CI_or_passport).get();
     if (snapshot.empty) {

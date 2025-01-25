@@ -4,7 +4,7 @@ exports.createReport = async (req, res) => {
   const {
     nombre, apellido, nickNames, nacionalidad, imagen, CI_or_passport, rut, genero, telefono, email,
     paga_puntual, HabitacionLimpiaYOrdenada, TranquilaYOrdenada, ConsumeMarihuana, ConsumeOtrasDrogas,
-    ConsumoAlcoholExesivo, AmenazaPolicia, amenazaExtranjeros, Destrozos, GritaEInsultaArrendatario, Robos,
+    ConsumoAlcoholExesivo, AmenazaPolicia, amenazaExtranjeros, Destrozos, GritaEInsultaArrendador, Robos,
     BuenasRelacionesPasajeros, AvisaConAntisipaciínRetirada, Independiante, privado, llavero, MeteGenteAgena,
     comentario
   } = req.body;
@@ -14,7 +14,7 @@ exports.createReport = async (req, res) => {
     const reportData = {
       nombre, apellido, nickNames, nacionalidad, imagen, CI_or_passport, rut, genero, telefono, email,
       paga_puntual, HabitacionLimpiaYOrdenada, TranquilaYOrdenada, ConsumeMarihuana, ConsumeOtrasDrogas,
-      ConsumoAlcoholExesivo, AmenazaPolicia, amenazaExtranjeros, Destrozos, GritaEInsultaArrendatario, Robos,
+      ConsumoAlcoholExesivo, AmenazaPolicia, amenazaExtranjeros, Destrozos, GritaEInsultaArrendador, Robos,
       BuenasRelacionesPasajeros, AvisaConAntisipaciínRetirada, Independiante, privado, llavero, MeteGenteAgena,
       comentario, creadoPor, fechaCreacion: new Date().toISOString()
     };
@@ -81,25 +81,23 @@ exports.deleteReport = async (req, res) => {
   }
 };
 
-// Definir la función getReportByCIOrPassport
 exports.getReportByCIOrPassport = async (req, res) => {
-    const CI_or_passport = req.params.CI_or_passport;
-    try {
-        const report = await getReportByCIOrPassport(CI_or_passport);
-        res.json(report);
-    } catch (err) {
-        console.error('Error retrieving report by CI or passport:', err.message);
-        res.status(500).json({ error: `Error retrieving report by CI or passport: ${err.message}` });
-    }
+  const CI_or_passport = req.params.CI_or_passport;
+  try {
+    const report = await getReportByCIOrPassport(CI_or_passport);
+    res.json(report);
+  } catch (err) {
+    console.error('Error retrieving report by CI or passport:', err.message);
+    res.status(500).json({ error: `Error retrieving report by CI or passport: ${err.message}` });
+  }
 };
 
-// New function to search reports by different fields
 exports.searchReports = async (req, res) => {
   const { query } = req.query;
   try {
     const queries = [
       db.collection('reports').where('nombre', '==', query).get(),
-      db.collection('reports').where('nick', '==', query).get(),
+      db.collection('reports').where('nickNames', '==', query).get(),
       db.collection('reports').where('telefono', '==', query).get(),
       db.collection('reports').where('email', '==', query).get()
     ];
