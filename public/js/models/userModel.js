@@ -1,7 +1,7 @@
 const userModel = {
     register: async function(userData) {
         try {
-            const response = await fetch('https://casiangelesydemonios.web.app/api/users/register', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -17,13 +17,16 @@ const userModel = {
 
     login: async function(userData) {
         try {
-            const response = await fetch('https://casiangelesydemonios.web.app/api/users/login', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(userData)
             });
+            if (!response.ok) {
+                throw new Error('Error al iniciar sesión');
+            }
             return await response.json();
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
@@ -33,7 +36,7 @@ const userModel = {
 
     loginWithGoogle: async function() {
         try {
-            const response = await fetch('https://casiangelesydemonios.web.app/api/users/loginWithGoogle', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/loginWithGoogle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,7 +51,7 @@ const userModel = {
 
     logout: async function() {
         try {
-            const response = await fetch('https://casiangelesydemonios.web.app/api/users/logout', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/logout', {
                 method: 'POST'
             });
             return await response.json();

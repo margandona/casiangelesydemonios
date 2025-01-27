@@ -63,7 +63,7 @@ const login = async (req, res) => {
   } catch (error) {
     console.error('Error al iniciar sesión:', error.message);
     // Manejar errores durante el inicio de sesión del usuario
-    res.status(500).send(`Error al iniciar sesión: ${error.message}`);
+    res.status(500).json({ error: `Error al iniciar sesión: ${error.message}` });
   }
 };
 
