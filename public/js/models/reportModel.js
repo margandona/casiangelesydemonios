@@ -43,7 +43,7 @@ const reportModel = {
 
     getAllReports: async function() {
         try {
-            const response = await fetch('https://casiangelesydemonios.web.app/api/reports', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/reports', { // Correct the endpoint URL
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'

@@ -1,5 +1,5 @@
 const express = require('express');
-const { submitForm } = require('../controllers/formController');
+const { submitForm } = require('../controllers/formcontroller');
 const { handleValidationErrors } = require('../models/formModel');
 
 const router = express.Router();

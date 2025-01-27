@@ -57,7 +57,7 @@ app.use('/api', messageRoutes);
 app.use('/api/publicidad', publicidadRoutes);
 
 // Use report routes
-app.use('/api', reportRoutes);
+app.use('/api/reports', reportRoutes); // Ensure the correct path for report routes
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

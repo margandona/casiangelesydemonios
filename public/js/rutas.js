@@ -1,7 +1,7 @@
 $(document).ready(function() {
     const reportForm = $('#reportForm');
     const editReportForm = $('#editReportForm');
-    const fetchUrl = 'http://localhost:3000/api/reports'; // Changed to HTTP for local development
+    const fetchUrl = 'https://casiangelesydemonios.web.app/api/reports'; // Changed to HTTP for local development
 
     reportForm.on('submit', function(event) {
         event.preventDefault();
@@ -90,7 +90,7 @@ $(document).ready(function() {
     $('#searchForm').on('submit', function(event) {
         event.preventDefault();
         const query = $('#searchQuery').val();
-        const url = query ? `http://localhost:3000/api/reports/search?query=${query}` : 'http://localhost:3000/api/reports';
+        const url = query ? `https://casiangelesydemonios.web.app/api/reports/search?query=${query}` : 'http://localhost:3000/api/reports';
         fetch(url, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -142,7 +142,7 @@ $(document).ready(function() {
     });
 
     $('#showAllReportsButton').on('click', function() {
-        fetch('http://localhost:3000/api/reports', {
+        fetch('https://casiangelesydemonios.web.app/api/reports', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -190,7 +190,7 @@ $(document).ready(function() {
 
                 $('.edit-report').on('click', function() {
                     const reportId = $(this).data('id');
-                    fetch(`http://localhost:3000/api/reports/${reportId}`, {
+                    fetch(`https://casiangelesydemonios.web.app/api/reports/${reportId}`, {
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
                         }
@@ -235,7 +235,7 @@ $(document).ready(function() {
                 $('.delete-report').on('click', function() {
                     const reportId = $(this).data('id');
                     if (confirm('¿Estás seguro de que deseas eliminar este reporte?')) {
-                        fetch(`http://localhost:3000/api/reports/${reportId}`, {
+                        fetch(`https://casiangelesydemonios.web.app/api/reports/${reportId}`, {
                             method: 'DELETE',
                             headers: {
                                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -278,7 +278,7 @@ $(document).ready(function() {
 
         console.log('Registering user:', { name, username, city, email, birthdate, nacionalidad, password }); // Add logging
 
-        fetch('http://localhost:3000/api/register', { // Changed to HTTP for local development
+        fetch('https://casiangelesydemonios.web.app/api/register', { // Changed to HTTP for local development
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -311,7 +311,7 @@ $(document).ready(function() {
 
         console.log('Logging in user:', { email, password }); // Add logging
 
-        fetch('http://localhost:3000/api/login', { // Changed to HTTP for local development
+        fetch('https://casiangelesydemonios.web.app/api/login', { // Changed to HTTP for local development
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

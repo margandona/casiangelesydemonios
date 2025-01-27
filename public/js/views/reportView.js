@@ -35,6 +35,7 @@ const ReportView = {
                                     <label for="nacionalidad">Nacionalidad:</label>
                                     <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" placeholder="Ingrese la nacionalidad del pasajero" required>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="imagen">URL de la Foto:</label>
                                     <input type="url" id="imagen" name="imagen" class="form-control" placeholder="Ingrese la URL de la foto" required>
@@ -219,7 +220,16 @@ const ReportView = {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-        reportModel.addReport(Object.fromEntries(formData));
+        reportModel.addReport(Object.fromEntries(formData))
+            .then(response => {
+                alert('Reporte creado exitosamente');
+                $('#reportForm')[0].reset();
+                $('#reportModal').modal('hide');
+            })
+            .catch(error => {
+                alert('Error al crear el reporte');
+                console.error(error);
+            });
     },
 
     formatPhoneNumbers(e) {

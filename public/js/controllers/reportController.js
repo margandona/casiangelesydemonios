@@ -92,6 +92,16 @@ class ReportController {
             }
         }
     }
+
+    async handleShowAllReports() {
+        try {
+            const reports = await reportModel.getAllReports();
+            // Render the reports in the UI
+            console.log(reports);
+        } catch (error) {
+            console.error('Error fetching all reports:', error);
+        }
+    }
 }
 
 // Inicializar el controlador

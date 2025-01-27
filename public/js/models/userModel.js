@@ -1,7 +1,7 @@
 const userModel = {
     register: async function(userData) {
         try {
-            const response = await fetch('/api/users/register', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ const userModel = {
 
     login: async function(userData) {
         try {
-            const response = await fetch('/api/users/login', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const userModel = {
 
     loginWithGoogle: async function() {
         try {
-            const response = await fetch('/api/users/loginWithGoogle', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/users/loginWithGoogle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ const userModel = {
 
     logout: async function() {
         try {
-            const response = await fetch('/api/users/logout', {
+            const response = await fetch('https://casiangelesydemonios.web.app/api/users/logout', {
                 method: 'POST'
             });
             return await response.json();

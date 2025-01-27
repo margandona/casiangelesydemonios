@@ -132,7 +132,7 @@ $(document).ready(function() {
                     <li class="list-group-item" style="user-select: none;">
                         <strong>Nombre:</strong> ${report.nombre}<br>
                         <strong>Apellido:</strong> ${report.apellido}<br>
-                        <strong>Nicknames:</strong> ${report.nickNames}<br>
+                        <strong>Nicknames:</strong> ${report.nickNames.join(', ')}<br>
                         <strong>Nacionalidad:</strong> ${report.nacionalidad}<br>
                         <strong>Rut:</strong> ${report.rut}<br>
                         <strong>Paga Puntual:</strong> ${report.paga_puntual}<br>
@@ -168,13 +168,13 @@ $(document).ready(function() {
                             $('#editReportForm').data('report-id', reportId);
                             $('#editReportForm #nombre').val(report.nombre);
                             $('#editReportForm #apellido').val(report.apellido);
-                            $('#editReportForm #nickNames').val(report.nickNames);
+                            $('#editReportForm #nickNames').val(report.nickNames.join(', '));
                             $('#editReportForm #nacionalidad').val(report.nacionalidad);
                             $('#editReportForm #imagen').val(report.imagen);
                             $('#editReportForm #CI_or_passport').val(report.CI_or_passport);
                             $('#editReportForm #rut').val(report.rut);
                             $('#editReportForm #genero').val(report.genero);
-                            $('#editReportForm #telefono').val(report.telefono);
+                            $('#editReportForm #telefono').val(report.telefono.join(', '));
                             $('#editReportForm #email').val(report.email);
                             $('#editReportForm #paga_puntual').val(report.paga_puntual);
                             $('#editReportForm #HabitacionLimpiaYOrdenada').val(report.HabitacionLimpiaYOrdenada);
