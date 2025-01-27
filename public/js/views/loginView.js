@@ -22,6 +22,7 @@ const LoginView = {
                                 </div>
                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </form>
+                            <button id="googleSignInButton" class="btn btn-danger">Iniciar sesión con Google</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +45,7 @@ const LoginView = {
             const message = await userModel.login(formData);
             alert(message);
             $('#loginModal').modal('hide');
-            window.location.href = 'mainView.html'; // Redirigir al dashboard
+            window.location.href = '/mainView.html'; // Redirigir al dashboard
         } catch (error) {
             alert('Error al iniciar sesión');
             console.error(error);
@@ -56,7 +57,7 @@ const LoginView = {
             const message = await userModel.loginWithGoogle();
             alert(message);
             $('#loginModal').modal('hide');
-            window.location.href = 'mainView.html'; // Redirigir al dashboard
+            window.location.href = '/mainView.html'; // Redirigir al dashboard
         } catch (error) {
             alert('Error al iniciar sesión con Google');
             console.error(error);

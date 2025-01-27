@@ -8,6 +8,7 @@ const authRoutes = require('./backend/routes/authRoutes'); // Importa las rutas 
 const messageRoutes = require('./backend/routes/messageRoutes'); // Importa las rutas de mensajes
 const publicidadRoutes = require('./backend/routes/publicidad'); // Importa las rutas de publicidad
 const reportRoutes = require('./backend/routes/reportRoutes'); // Importa las rutas de reportes
+const functions = require('firebase-functions'); // Import Firebase functions
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -48,7 +49,7 @@ app.use('/api', formRoutes);
 app.use('/api', userRoutes);
 
 // Use auth routes
-app.use('/api', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // Use message routes
 app.use('/api', messageRoutes);
@@ -59,6 +60,13 @@ app.use('/api/publicidad', publicidadRoutes);
 // Use report routes
 app.use('/api/reports', reportRoutes); // Ensure the correct path for report routes
 
+// Use Firebase functions routes
+const functionsRoutes = require('./functions/index');
+app.use('/api/functions', functionsRoutes);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+// Export the app for Firebase functions
+module.exports = app;

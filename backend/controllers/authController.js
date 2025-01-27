@@ -55,11 +55,11 @@ const login = async (req, res) => {
     console.log('Usuario encontrado:', userRecord);
     console.log('Documento del usuario:', userDoc.data());
 
-    // Generar un token JWT para el usuario
-    const token = jwt.sign({ uid: userRecord.uid, role: userRole }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
+    // Generate a custom token
+    const customToken = await admin.auth().createCustomToken(userRecord.uid, { role: userRole });
 
-    // Responder con el token generado
-    res.status(200).json({ token });
+    // Respond with the custom token
+    res.status(200).json({ customToken });
   } catch (error) {
     console.error('Error al iniciar sesión:', error.message);
     // Manejar errores durante el inicio de sesión del usuario
@@ -69,3 +69,5 @@ const login = async (req, res) => {
 
 // Exportar las funciones de registro e inicio de sesión
 module.exports = { register, login };
+
+// ...other methods...
